@@ -1,0 +1,62 @@
+E -> N
+E -> E PLUS E
+E -> E MINUS E
+E -> E STAR E
+E -> B
+E -> E DEQ E
+E -> IF E THEN E ELSE E
+E -> S
+E -> LENGTH LPAR S RPAR
+E -> INDEX LPAR E COMMA E RPAR
+E -> LPAR E COMMA E RPAR
+E -> FST E
+E -> SND E
+E -> S FUNCAPP
+FUNCAPP -> LPAR E FUNCAPP
+FUNCAPP -> COMMA E FUNCAPP
+FUNCAPP -> RPAR
+E -> LPAR E RPAR
+E -> LAMBDA X PERIOD E
+E -> LETPART IN E
+LETPART -> LETTYPE LETEXPR EQ E
+LETTYPE -> LET
+LETTYPE -> LET RECF S
+LETTYPE -> LET LPAR E COMMA E RPAR
+LETTYPE -> LET FUN S
+LETEXPR -> LPAR S COLON TYPE RPAR COLON TYPE
+LETEXPR -> LPAR S COLON TYPE RPAR
+LETEXPR -> LPAR S COMMA S RPAR
+LETEXPR -> E
+LET -> "let"
+FUN -> "fun"
+B -> "true" | "false"
+LENGTH -> "length"
+INDEX -> "index"
+LET -> "let"
+IN -> "in"
+FST -> "fst"
+SND -> "snd"
+LAMBDA -> "\"
+RECF -> "rec"
+TYPE -> "bool"
+TYPE -> "int"
+TYPE -> "str"
+TYPE -> TYPE ARROW TYPE
+TYPE -> TYPE STAR TYPE
+TYPE -> LPAR TYPE RPAR
+PLUS -> "+"
+MINUS -> "-"
+STAR -> "*"
+DEQ -> "=="
+LPAR -> "("
+RPAR -> ")"
+COMMA -> ","
+EQ -> "="
+COLON -> ":"
+PERIOD -> "."
+ARROW -> "->"
+QUOTE -> "QUOTE"
+N -> "1"
+IF -> "if"
+THEN -> "then"
+ELSE -> "else"
