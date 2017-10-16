@@ -1,22 +1,42 @@
+# Basic Types
 E -> N
+E -> B
+E -> S
+
+# Math operations
 E -> E PLUS E
 E -> E MINUS E
 E -> E STAR E
-E -> B
-E -> E DEQ E
-E -> IF E THEN E ELSE E
-E -> S
-E -> LENGTH LPAR S RPAR
-E -> INDEX LPAR E COMMA E RPAR
-E -> LPAR E COMMA E RPAR
-E -> FST E
-E -> SND E
+
+# Bool operations
+E -> BOOLOP
+BOOLOP -> E DEQ E
+BOOLOP -> IF E THEN E ELSE E
+
+# String operations
+E -> STROP
+STROP -> LENGTH LPAR S RPAR
+STROP -> INDEX LPAR E COMMA E RPAR
+
+# Pair operations
+E -> PAIROP
+PAIROP -> LPAR E COMMA E RPAR
+PAIROP -> FST E
+PAIROP -> SND E
+
+# Function application
 E -> S FUNCAPP
 FUNCAPP -> LPAR E FUNCAPP
 FUNCAPP -> COMMA E FUNCAPP
 FUNCAPP -> RPAR
+
+# Expressions can be surrounded by parantheses
 E -> LPAR E RPAR
+
+# Lambdas
 E -> LAMBDA X PERIOD E
+
+# Let expressions
 E -> LETPART IN E
 LETPART -> LETTYPE LETEXPR EQ E
 LETTYPE -> LET
@@ -27,23 +47,30 @@ LETEXPR -> LPAR S COLON TYPE RPAR COLON TYPE
 LETEXPR -> LPAR S COLON TYPE RPAR
 LETEXPR -> LPAR S COMMA S RPAR
 LETEXPR -> E
-LET -> "let"
-FUN -> "fun"
-B -> "true" | "false"
-LENGTH -> "length"
-INDEX -> "index"
-LET -> "let"
-IN -> "in"
-FST -> "fst"
-SND -> "snd"
-LAMBDA -> "\"
-RECF -> "rec"
+
+# Type Rules
 TYPE -> "bool"
 TYPE -> "int"
 TYPE -> "str"
 TYPE -> TYPE ARROW TYPE
 TYPE -> TYPE STAR TYPE
 TYPE -> LPAR TYPE RPAR
+
+# Let Terminals
+LET -> "let"
+FUN -> "fun"
+
+# Boolean Terminals
+B -> "true" | "false"
+
+# Language Keywords
+LENGTH -> "length"
+INDEX -> "index"
+IN -> "in"
+FST -> "fst"
+SND -> "snd"
+LAMBDA -> "\"
+RECF -> "rec"
 PLUS -> "+"
 MINUS -> "-"
 STAR -> "*"
@@ -55,8 +82,6 @@ EQ -> "="
 COLON -> ":"
 PERIOD -> "."
 ARROW -> "->"
-QUOTE -> "QUOTE"
-N -> "1"
 IF -> "if"
 THEN -> "then"
 ELSE -> "else"
