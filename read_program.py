@@ -83,7 +83,7 @@ def get_parser_for_grammar(input_code='program.gir', grammar_name='grammar'):
     )
 
     with open(grammar_name, 'r') as f:
-        lines = '\n'.join(f.readlines())
+        lines = '\n'.join([x for x in f.readlines() if x[0] != '#'])
         lines = lines + '\n' + '\n'.join(terminal_rules)
         return nltk.ChartParser(CFG.fromstring(lines))
 
